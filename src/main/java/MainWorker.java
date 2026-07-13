@@ -48,6 +48,7 @@ public class MainWorker extends Thread{
         return result.toString();
     }
 
+    @Override
     public void run() {
         output = generate(format, avglen);
         System.out.println(output);
