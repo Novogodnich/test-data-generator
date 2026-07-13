@@ -2,52 +2,56 @@ import java.util.*;
 import static java.lang.System.out;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        out.println("Enter help for summary.\nEnter start for start");
-        Scanner input = new Scanner(System.in);
-        String command = input.nextLine();
+    public static void main(String[] args) {
+        try {
+            out.println("Enter help for summary.\nEnter start for start");
+            Scanner input = new Scanner(System.in);
+            String command = input.nextLine();
 
-        if (command.equals("help")) {
-            printSummary();
-            main(new String[0]);
-        } else if (command.equals("start")) {
-            out.println("Enter names of labels in format: \"name, name2, name3\".");
-            String inputLine = input.nextLine();
-            String[] names = inputLine.split("\\s*,\\s*");
-            Map<String, String> labels = new HashMap<>();
-            Map<String, Integer> labelCount = new HashMap<>();
+            if (command.equals("help")) {
+                printSummary();
+                main(new String[0]);
+            } else if (command.equals("start")) {
+                out.println("Enter names of labels in format: \"name, name2, name3\".");
+                String inputLine = input.nextLine();
+                String[] names = inputLine.split("\\s*,\\s*");
+                Map<String, String> labels = new HashMap<>();
+                Map<String, Integer> labelCount = new HashMap<>();
 
-            for (String name : names) {
-                out.println("Enter regex for name " + name + " in format: \"GEN@GEN.ru\". GEN is generated value.");
-                labels.put(name, input.nextLine());
-            }
-
-            for (String name : names) {
-                out.println("Enter average length for name " + name + " in format: \"5\".");
-                labelCount.put(name, input.nextInt());
-            }
-
-            out.println("Enter count of entities for each name.");
-            long entityCount = input.nextLong();
-
-            out.println("Starting!");
-
-            for (String name : names) {
-                Set<MainWorker> workers = new HashSet<>();
-                out.println("\nЗначения для имени " + name + ":\n");
-                for (long i = 0; i < entityCount; i++) {
-                    MainWorker mainWorker = new MainWorker(labels.get(name), labelCount.get(name));
-                    workers.add(mainWorker);
-                    mainWorker.start();
+                for (String name : names) {
+                    out.println("Enter regex for name " + name + " in format: \"GEN@GEN.ru\". GEN is generated value.");
+                    labels.put(name, input.nextLine());
                 }
-                for (MainWorker worker : workers) {
-                    worker.join();
+
+                for (String name : names) {
+                    out.println("Enter average length for name " + name + " in format: \"5\".");
+                    labelCount.put(name, input.nextInt());
                 }
+
+                out.println("Enter count of entities for each name.");
+                long entityCount = input.nextLong();
+
+                out.println("Starting!");
+
+                for (String name : names) {
+                    Set<MainWorker> workers = new HashSet<>();
+                    out.println("\nЗначения для имени " + name + ":\n");
+                    for (long i = 0; i < entityCount; i++) {
+                        MainWorker mainWorker = new MainWorker(labels.get(name), labelCount.get(name));
+                        workers.add(mainWorker);
+                        mainWorker.start();
+                    }
+                    for (MainWorker worker : workers) {
+                        worker.join();
+                    }
+                }
+            } else {
+                out.println("Unknown command");
+                printSummary();
+                System.exit(1);
             }
-        } else {
-            out.println("Unknown command");
-            printSummary();
-            System.exit(1);
+        } catch (InterruptedException ignored) {
+            System.exit(130);
         }
     }
 
