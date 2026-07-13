@@ -2,14 +2,14 @@ import java.util.*;
 import static java.lang.System.out;
 
 public class Main {
-    void main() throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         out.println("Enter help for summary.\nEnter start for start");
         Scanner input = new Scanner(System.in);
         String command = input.nextLine();
 
         if (command.equals("help")) {
             printSummary();
-            main();
+            main(new String[0]);
         } else if (command.equals("start")) {
             out.println("Enter names of labels in format: \"name, name2, name3\".");
             String inputLine = input.nextLine();
@@ -51,7 +51,7 @@ public class Main {
         }
     }
 
-    private void printSummary() {
+    private static void printSummary() {
         out.println("========================================================================");
         out.println("      DATA GENERATOR ENGINE v1.0 — REFERENCE GUIDE");
         out.println("========================================================================");
