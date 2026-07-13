@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Getter
 @Setter
@@ -26,12 +27,12 @@ public class MainWorker extends Thread{
         String characters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJJKLKZXCVBNM";
 
         for (int i = 0; i < count; i++) {
-            int tmp = Shared.random.nextInt(0, 4);
+            int tmp = ThreadLocalRandom.current().nextInt(0, 4);
             int length = (tmp < 3) ? (avgLength - tmp) : (avgLength + tmp);
 
             StringBuilder sb = new StringBuilder(length);
             for (int y = 0; y < length; y++) {
-                int index = Shared.random.nextInt(characters.length());
+                int index = ThreadLocalRandom.current().nextInt(characters.length());
                 sb.append(characters.charAt(index));
             }
             generated.add(sb.toString());
