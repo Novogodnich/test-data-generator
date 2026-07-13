@@ -53,30 +53,26 @@ public class Main {
 
     private void printSummary() {
         out.println("========================================================================");
-        out.println("      DATA GENERATOR ENGINE v1.0 — СПРАВКА ПО ИСПОЛЬЗОВАНИЮ");
+        out.println("      DATA GENERATOR ENGINE v1.0 — REFERENCE GUIDE");
         out.println("========================================================================");
-        out.println("Программа предназначена для высокопроизводительной генерации случайных");
-        out.println("текстовых данных (имен, email, ID, хэшей) по заданному текстовому шаблону.");
-        out.println();
-        out.println("УПРАВЛЕНИЕ:");
-        out.println("  1. Введите список имён (колонок/сущностей) через запятую.");
-        out.println("  2. Для каждого имени задайте маску генерации (формат).");
-        out.println("  3. Укажите среднюю длину (генератор будет случайно варьировать её в пределах +-3).");
-        out.println("  4. Укажите количество строк для генерации.");
-        out.println();
-        out.println("ПРАВИЛА ЗАДАНИЯ МАСКИ:");
-        out.println("  Ключевое слово 'GEN' является маркером вставки случайных символов.");
-        out.println("  Всё, что написано вокруг 'GEN', остаётся неизменным (статический текст).");
-        out.println();
-        out.println("Примеры масок:");
-        out.println("  - GEN@GEN.ru          ->  случайнаяСтрока@случайнаяСтрока.ru");
-        out.println("  - id_GEN_2026         ->  id_случайнаяСтрока_2026");
-        out.println("  - +7(999)GEN-GEN-GEN  ->  телефонный номер со случайными блоками букв");
-        out.println();
-        out.println("АРХИТЕКТУРА И МНОГОПОТОЧНОСТЬ:");
-        out.println("  Генерация для каждой сущности происходит параллельно в изолированных");
-        out.println("  потоках ядра ОС. Потоки синхронизированы через барьеры ожидания (Thread.join),");
-        out.println("  что гарантирует упорядоченный вывод без состояния гонки (Race Condition).");
+        out.println("This program is designed for high-performance generation of random");
+        out.println("textual data (names, emails, IDs, hashes) based on a user-defined text template.\n");
+        out.println("CONTROLS:");
+        out.println("  1. Enter a list of names (columns/entities) separated by commas.");
+        out.println("  2. For each name, specify a generation mask (format).");
+        out.println("  3. Specify the average length (the generator will randomly vary it within ±3).");
+        out.println("  4. Specify the number of rows to generate.\n");
+        out.println("MASK DEFINITION RULES:");
+        out.println("  The keyword 'GEN' serves as a marker for inserting random characters.");
+        out.println("  Everything written around 'GEN' remains unchanged (static text).\n");
+        out.println("Mask examples:");
+        out.println("  - GEN@GEN.ru          ->  randomString@randomString.ru");
+        out.println("  - id_GEN_2026         ->  id_randomString_2026");
+        out.println("  - +7(999)GEN-GEN-GEN  ->  phone number with random letter blocks\n");
+        out.println("ARCHITECTURE AND MULTITHREADING:");
+        out.println("  Generation for each entity occurs in parallel in isolated");
+        out.println("  OS kernel threads. Threads are synchronized via wait barriers (Thread.join),");
+        out.println("  which guarantees ordered output with no race conditions.");
         out.println("========================================================================");
     }
 }

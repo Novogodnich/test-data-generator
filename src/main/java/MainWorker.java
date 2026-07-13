@@ -12,7 +12,7 @@ import java.util.List;
 public class MainWorker extends Thread{
     private String output;
     private final @NonNull String format;
-    private final @NonNull int avglen;
+    private final @NonNull Integer avglen;
 
     public String generate(@NonNull String format, int avgLength) {
         if (avgLength < 3) {
