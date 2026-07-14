@@ -6,7 +6,7 @@ public class MainTest {
     @Test
     public void mainTest() {
         try {
-            MainWorker worker = new MainWorker(".GEN.", 4);
+            MainWorker worker = new MainWorker(".GEN.", 4, false);
 
             worker.start();
             worker.join();
@@ -22,7 +22,7 @@ public class MainTest {
     @Test
     public void testNoStart() {
         try {
-            MainWorker worker = new MainWorker(".GEN.", 4);
+            MainWorker worker = new MainWorker(".GEN.", 4, false);
 
             worker.run();
 
