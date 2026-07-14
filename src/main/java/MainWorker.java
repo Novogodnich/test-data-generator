@@ -14,6 +14,7 @@ public class MainWorker extends Thread{
     private String output;
     private final @NonNull String format;
     private final @NonNull Integer avglen;
+    private final @NonNull boolean print;
 
     public String generate(@NonNull String format, int avgLength) {
         if (avgLength < 3) {
@@ -52,6 +53,6 @@ public class MainWorker extends Thread{
     @Override
     public void run() {
         output = generate(format, avglen);
-        System.out.println(output);
+        if (print) System.out.println(output);
     }
 }
