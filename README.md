@@ -2,7 +2,7 @@
 
 A high-performance console engine built on pure Java SE for generating realistic text data based on user-defined masks and templates. The project is developed without heavyweight frameworks (Spring/Hibernate), focusing on native multithreading and efficient memory management.
 
-## 🔥 Key Features and Architecture
+## Key Features and Architecture
 
 *   **Pure Java Core:** No Spring overhead — only efficient data structures and built-in concurrency mechanisms.
 *   **Safe Multithreading:** Data generation for each entity is isolated in separate OS kernel threads. Output synchronization is implemented via `Thread.join()` wait barriers, completely eliminating race conditions and console output interleaving.
@@ -10,14 +10,14 @@ A high-performance console engine built on pure Java SE for generating realistic
 *   **Random Optimizations:** Use of a thread-safe generator to prevent locks between competing threads.
 *   **Test Coverage:** Worker logic is fully covered by unit tests, verifying different execution modes (asynchronous `start()` and synchronous `run()`).
 
-## 🛠 Technology Stack
+## Technology Stack
 
 *   **Language:** Java 21+ (or any modern LTS version)
 *   **Concurrency API:** Threading, Join Barrier Synchronization
 *   **Testing:** TestNG / JUnit
 *   **Boilerplate Reduction:** Project Lombok
 
-## 🚀 Quick Start and Usage Example
+## Quick Start and Usage Example
 
 When launched, the application provides an interactive CLI interface for configuring generation parameters:
 
@@ -48,3 +48,6 @@ Values for name test_id:
 ID_asdfghjk_2026
 ID_qwerty_2026
 ID_zxcvbnma_2026
+```
+
+*Readme and guides written by AI. All code is human-writed(mine)*
